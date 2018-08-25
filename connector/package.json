@@ -1,0 +1,20 @@
+{
+	"name": "oraclize-connector",
+	"version": "1.0.0",
+	"description": "oraclize-connector chaincode implemented in node.js",
+	"engines": {
+		"node": ">=8.4.0",
+		"npm": ">=5.3.0"
+	},
+	"scripts": {
+		"start": "node oraclize-connector.js"
+	},
+	"engine-strict": true,
+	"license": "MIT",
+	"dependencies": {
+		"cbor-sync": "^1.0.2",
+		"fabric-shim": "unstable",
+		"node-pre-gyp": "^0.10.3",
+		"request": "^2.87.0"
+	}
+}
