@@ -139,7 +139,7 @@ let Chaincode = class { // Implements the Oraclize chaincode
       let result = jsonOraclizeQueryResult.result.checks[0].results[0] // Return only the results and the proofs
       let proof = jsonOraclizeQueryResult.result.checks[0].proofs[0].value
       if (typeof result === "string") {
-        console.log("result typse is: string");
+        console.log("result type is: string");
         result = Buffer.from(result)
       } else {
         console.log("result type is: ", typeof result);
