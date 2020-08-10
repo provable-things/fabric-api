@@ -28,7 +28,7 @@ import (
 	"strings"
 	utf8 "unicode/utf8"
 	
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
 )
 
 /*
