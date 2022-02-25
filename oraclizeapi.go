@@ -836,10 +836,10 @@ func OraclizeQuery_sync(stub shim.ChaincodeStubInterface, dataset string, url st
 	fmt.Println("*********************** START: OraclizeQuery_sync ***********************")
 	chainCodeArgs := ToChaincodeArgs("oraclizeQuery", dataset, url, proofType)
 	fmt.Println("dataset: ", dataset);
-	fmt.Println("dataset: ", url);
-	fmt.Println("dataset: ", proofType);
+	fmt.Println("url: ", url);
+	fmt.Println("proofType: ", proofType);
 	fmt.Println("stub.GetChannelID(): ", stub.GetChannelID());
-	response := stub.InvokeChaincode("oraclize-connector", chainCodeArgs, stub.GetChannelID())
+	response := stub.InvokeChaincode("oraclize", chainCodeArgs, stub.GetChannelID())
 	if response.Status != shim.OK {
 		fmt.Println("response: ", response);
 		fmt.Println("oraclizeapi - Error Invoking oraclize-connector:", response.Message)
