@@ -28,7 +28,7 @@ import (
 	"strings"
 	utf8 "unicode/utf8"
 	
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
 )
 
 /*
@@ -833,9 +833,15 @@ const (
 
 // OraclizeQuery_sync is used for synchronously sending a request and getting a result+authenticity proof from Oraclize
 func OraclizeQuery_sync(stub shim.ChaincodeStubInterface, dataset string, url string, proofType string) ([]byte, []byte) {
+	fmt.Println("*********************** START: OraclizeQuery_sync ***********************")
 	chainCodeArgs := ToChaincodeArgs("oraclizeQuery", dataset, url, proofType)
-	response := stub.InvokeChaincode("oraclize-connector", chainCodeArgs, stub.GetChannelID())
+	fmt.Println("dataset: ", dataset);
+	fmt.Println("url: ", url);
+	fmt.Println("proofType: ", proofType);
+	fmt.Println("stub.GetChannelID(): ", stub.GetChannelID());
+	response := stub.InvokeChaincode("oraclize", chainCodeArgs, stub.GetChannelID())
 	if response.Status != shim.OK {
+		fmt.Println("response: ", response);
 		fmt.Println("oraclizeapi - Error Invoking oraclize-connector:", response.Message)
 		return nil, nil
 	}
@@ -850,5 +856,6 @@ func OraclizeQuery_sync(stub shim.ChaincodeStubInterface, dataset string, url st
 	}
 	var result = []byte(storage[0])
 	var proof = []byte(storage[1])
+	fmt.Println("*********************** END: OraclizeQuery_sync ***********************")
 	return result, proof
 }
